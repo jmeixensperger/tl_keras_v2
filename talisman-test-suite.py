@@ -46,21 +46,29 @@ input_shape = None
 #base_model = load_base_model('InceptionV3', input_shape)
 #base_model = load_base_model('ResNet50', input_shape)
 #base_model = load_base_model('VGG16')
-base_model = load_base_model('VGG19', input_shape)
+#base_model = load_base_model('VGG19', input_shape)
+#base_model = load_base_model('Xception', input_shape)
+base_model = load_base_model('InceptionResNetV2', input_shape)
 
 # extract features from an earlier InceptionV3 layer
 #base_model = Model(inputs=base_model.input, outputs=base_model.get_layer('mixed10').output, name='inception_v3')
 #base_model = Model(inputs=base_model.input, outputs=base_model.get_layer('avg_pool').output, name='resnet50')
 #base_model = Model(input=base_model.input, outputs=base_model.get_layer('block5_pool').output, name='vgg16')
-base_model = Model(input=base_model.input, outputs=base_model.get_layer('block5_pool').output, name='vgg19')
+#base_model = Model(input=base_model.input, outputs=base_model.get_layer('block5_pool').output, name='vgg19')
+#base_model = Model(input=base_model.input, outputs=base_model.get_layer('block14_sepconv2_act').output, name='xception')
+base_model = Model(input=base_model.input, outputs=base_model.get_layer('conv_7b_ac').output, name='inceptionresnetv2')
+
 print(base_model.output.name, "layer will be used for creating bottlenecks.")  
 x = base_model.output
 x = GlobalAveragePooling2D()(x)
 #base_model = Model(inputs=base_model.input, outputs=x, name='inception_v3')
 #base_model = Model(inputs=base_model.input, outputs=x, name='resnet50')
 #base_model = Model(inputs=base_model.input, outputs=x, name='vgg16')
-base_model = Model(inputs=base_model.input, outputs=x, name='vgg19')
+#base_model = Model(inputs=base_model.input, outputs=x, name='vgg19')
+#base_model = Model(inputs=base_model.input, outputs=x, name='xception')
+base_model = Model(inputs=base_model.input, outputs=x, name='inception_resnet_v2')
 #base_model.summary()
+
 
 # setup paths
 data_dir = '../binary2'
@@ -71,7 +79,9 @@ groups_file = './research/patient-groups.csv' # csv -> file_name,group
 #bottleneck_file = './research/tmp/inception_v3-mixed10.h5'
 #bottleneck_file = './research/tmp/resnet50-converted.h5'
 #bottleneck_file = './research/tmp/vgg16-converted.h5'
-bottleneck_file = './research/tmp/vgg19.h5'
+#bottleneck_file = './research/tmp/vgg19.h5'
+#bottleneck_file = './research/tmp/xception.h5'
+bottleneck_file = './research/tmp/inception_resnet_v2.h5'
 
 # create directories if missing
 if os.path.exists(tmp_dir + 'results'):
