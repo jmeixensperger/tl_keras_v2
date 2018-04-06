@@ -42,6 +42,7 @@ def create_groups(data_dir, groups_file):
 
 _model = 'inception_v3'
 
+# clean this up
 t_layers = []
 base_model_str = ''
 if _model == 'vgg19' or _model == 'vgg16':
@@ -113,19 +114,18 @@ f1_avgs = {}
 f1_stds = {}
 cv = True
 groups = "patient-groups"
+base_model = None
 bottleneck_base = './research/tmp/' + _model + '-'
 for i in range(len(t_layers)):
 	bottleneck_file = ''
 	base_model = None
 	base_model = load_base_model(base_model_str, input_shape)
-	#da_layers = base_model.layers
-	#my_layer = base_model.get_layer(t_layers[i])
-	#for j in range(len(da_layers)):
-	#	dis_layer = da_layers[j]
-	#	if dis_layer == my_layer:
-	#		print()
-	#		print('layer is index ' + str(j))
-	#		print()
+	#layer_idx = -1
+	#all_layers = base_model.layers
+	#transfer_layer = base_model.get_layer(t_layers[i])
+	#for j in range(len(all_layers)):
+	#	if transfer_layer == all_layers[j]:
+	#		layer_idx = j
 	base_model = Model(inputs=base_model.input, outputs=base_model.get_layer(t_layers[i]).output, name=_model)
 	print(base_model.output.name, "layer will be used for creating bottlenecks.")
 	x = base_model.output
@@ -137,11 +137,8 @@ for i in range(len(t_layers)):
 	report.data_summary(data_dir, groups_file, csv=tmp_dir+'data_summary.csv')
 	groups_files = [groups_file]
 	bottlenecks = create_bottlenecks(bottleneck_file, data_dir, base_model, groups_files)
-	[f1_avg, f1_std] = cross_validate(
-				base_model, bottlenecks, tmp_dir, data_dir, groups=groups,
-				num_folds=5, logo=True, use_weights=False, resample=1.0,
-				optimizer=None, dropout_rate=0.5, epochs=20, batch_size=512,
-				summarize_model=False, summarize_misclassified_images=False)
+	#needs to be fixed
+	#[f1_avgs, f1_stds] = cross_validate(...)
 	f1_avgs[t_layers[i]] = f1_avg
 	f1_stds[t_layers[i]] = f1_std
 	out_file.write(t_layers[i] + ': ' + str(f1_avg) + ' | ' + str(f1_std) + '\n')
