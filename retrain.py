@@ -57,7 +57,7 @@ def load_base_model(model_name, input_shape=None):
         if input_shape is None:
             input_shape = (224, 224, 3)
         base_model = VGG19(weights='imagenet', include_top=False, input_shape=input_shape, pooling='avg')
-    elif model_name == 'InceptionResNetV2':
+    elif model_name == 'InceptionResnetV2':
         if input_shape is None:
             input_shape = (299, 299, 3)
         base_model = InceptionResNetV2(weights='imagenet', include_top=False, input_shape=input_shape, pooling='avg')
@@ -956,4 +956,5 @@ def cross_validate(
                 row = file_names_test[m] + ',' + classes[predicted_classes[m]] + ',' + str(prediction_scores[m])
                 f.write("%s\n" % row)
         print("csv of all misclassified images saved to", csv)
+    return [np.mean(f1_avgs), np.std(f1_avgs)]
 
