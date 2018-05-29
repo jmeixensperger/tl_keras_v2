@@ -7,7 +7,9 @@ Install [miniconda](http://conda.pydata.org/miniconda.html).
 Create a conda environment:
 
     conda create -n Keras python=3.5 numpy scipy yaml h5py scikit-learn pillow
-    source activate Keras 
+    source activate Keras
+    pip install Tensorflow
+    pip install Keras
 
 
 *Note some of the required conda packages might be missing from this list!*
