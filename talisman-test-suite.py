@@ -42,7 +42,9 @@ def create_groups(data_dir, groups_file):
 
 _model = 'inception_v3'
 
-# clean this up
+# For each of the following conditions:
+# - t_layers: a list of layers for testing transfer learning (usually at repetitive increments)
+# To get a Model's layers, use Model.layers to return a list, or Model.summary to print their information directly
 t_layers = []
 base_model_str = ''
 if _model == 'vgg19' or _model == 'vgg16':
@@ -65,7 +67,8 @@ elif _model == 'xception':
 		'block1_sepconv2_act']
 	base_model_str = 'Xception'
 elif _model == 'inception_resnet_v2':
-	t_layers = ['block8_4_mixed', 'block8_2_mixed', 'block17_20_mixed', 'block17_16_mixed', 'block17_12_mixed', 'block17_8_mixed', 'block17_4_mixed']
+	t_layers = ['block8_4_mixed', 'block8_2_mixed', 'block17_20_mixed', 'block17_16_mixed', 'block17_12_mixed',
+		    'block17_8_mixed', 'block17_4_mixed']
 	base_model_str = 'InceptionResnetV2'
 
 
@@ -86,9 +89,11 @@ input_shape = None
 #base_model = Model(input=base_model.input, outputs=base_model.get_layer('block4_conv4').output, name='vgg19')
 #base_model = Model(input=base_model.input, outputs=base_model.get_layer('block14_sepconv2_act').output, name='xception')
 #base_model = Model(input=base_model.input, outputs=base_model.get_layer('conv_7b_ac').output, name='inception_resnet_v2')
+
 #print(base_model.output.name, "layer will be used for creating bottlenecks.")  
 #x = base_model.output
 #x = GlobalAveragePooling2D()(x)
+
 #base_model = Model(inputs=base_model.input, outputs=x, name='inception_v3')
 #base_model = Model(inputs=base_model.input, outputs=x, name='resnet50')
 #base_model = Model(inputs=base_model.input, outputs=x, name='vgg16')
