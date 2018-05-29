@@ -1,5 +1,5 @@
 ### TL_Keras_V2
-This project aims to classify images with/without various Interstitial Lung Disease.
+This project aims to use "Transfer Learning" with Keras Models to accurately classify different types of Interstitial Lung Disease (ILD). By providing CT scan patches in RGB format, the Convolutional Neural Networks can learn to identify each class of ILD, as well as those without any disease. Transfer Learning allows the program to pull intermediate outputs from the network and compare classes using simpler features.
 
 ### Setup
 Install [miniconda](http://conda.pydata.org/miniconda.html).
@@ -37,3 +37,9 @@ Then put these folders in a parent directory so the directory structure looks so
     └── micronodules
 
 ### Research Directory
+The research directory comes pre-loaded with 2 .csv groups files:
+
+    binary_patient_groups.csv
+    multiclass_patient_groups.csv
+    
+Correctly assign the groups_file variable in talisman-test-suite.py based on desired classification.
