@@ -1,5 +1,5 @@
 ### TL_Keras_V2
-This project aims to classify images with/without various 
+This project aims to classify images with/without various Interstitial Lung Disease.
 
 ### Setup
 Install [miniconda](http://conda.pydata.org/miniconda.html).
@@ -18,7 +18,11 @@ Activate the conda environment:
 
     source activate Keras
 
-See ssu_talisman.py for a usage example. Also most functions have up to date docstrings on the master branch.
+See talisman-test-suite.py for a usage example. Also most functions have up to date docstrings on the master branch.
+
+### SVC
+Dictionary of images are saved in svc file located in tl_keras_v2/research. 
+
 
 ### Preparing Images
 Put the images in folders named with the image class label. 
