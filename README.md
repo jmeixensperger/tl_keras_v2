@@ -1,3 +1,6 @@
+### TL_Keras_V2
+This project aims to classify images with/without various 
+
 ### Setup
 Install [miniconda](http://conda.pydata.org/miniconda.html).
 
@@ -17,7 +20,7 @@ Activate the conda environment:
 
 See ssu_talisman.py for a usage example. Also most functions have up to date docstrings on the master branch.
 
-##### Preparing Images
+### Preparing Images
 Put the images in folders named with the image class label. 
 Each class needs at least 25 images.
 Then put these folders in a parent directory so the directory structure looks something like:
@@ -29,3 +32,4 @@ Then put these folders in a parent directory so the directory structure looks so
     ├── ground_glass
     └── micronodules
 
+### Research Directory
