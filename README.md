@@ -8,10 +8,13 @@ Create a conda environment:
 
     conda create -n Keras python=3.5 numpy scipy yaml h5py scikit-learn pillow
     source activate Keras 
-    pip install tensorflow
-    pip install keras
+
 
 *Note some of the required conda packages might be missing from this list!*
+
+Unzip images:
+    unzip binary_images.zip
+    unzip multiclass_images.zip
 
 ### Usage
 Activate the conda environment:
