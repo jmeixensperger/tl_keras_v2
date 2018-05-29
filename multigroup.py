@@ -1,3 +1,10 @@
+"""
+This script will create a new patient groups .csv file in which all patient
+numbers are removed from referenced file names.
+
+Assign your own directory paths before definition of main().
+"""
+
 import os
 import shutil
 
