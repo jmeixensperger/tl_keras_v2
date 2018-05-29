@@ -1,16 +1,5 @@
-# Cross Validation of Transfer Learning with Keras & Scikit-learn
-Use the cross validation functions from scikit-learn to evaluate 
-convolutional neural network models from Keras. 
-
-The system has the following features:
-- transfer learning bottlenecks stored in the HDF5 format for increased speed using h5py
-- define groups so that cross validation splits are done on group membership
-- combine or exclude classes (so you don't have to copy or delete images on disk)
-- oversampling to balance classes
-- other stuff I might be forgetting
-
-Results (particularly individual class scores for each fold) are saved as csvs for further analysis in your platform of choice.
-F-scores and confusion matrices are output to the console while the tests are running.
+### TL_Keras_V2
+This project aims to classify images with/without various Interstitial Lung Disease.
 
 ### Setup
 Install [miniconda](http://conda.pydata.org/miniconda.html).
@@ -29,20 +18,22 @@ Activate the conda environment:
 
     source activate Keras
 
-See ssu_preserves.py for a usage example. Also most functions have up to date docstrings on the master branch.
+See talisman-test-suite.py for a usage example. Also most functions have up to date docstrings on the master branch.
 
-##### Preparing Images
+### SVC
+Dictionary of images are saved in svc file located in tl_keras_v2/research. 
+
+
+### Preparing Images
 Put the images in folders named with the image class label. 
 Each class needs at least 25 images.
 Then put these folders in a parent directory so the directory structure looks something like:
 
     images
-    ├── bobcat
-    ├── deer
-    ├── human
-    ├── nothing
-    ├── possum
-    ├── skunk
-    ├── squirrel
-    └── turkey
+    ├── healthy
+    ├── emphysema
+    ├── fibrosis
+    ├── ground_glass
+    └── micronodules
 
+### Research Directory
